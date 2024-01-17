@@ -1,0 +1,58 @@
+# The manifest for the "online-store-ver1-service" service.
+# Read the full specification for the "Load Balanced Web Service" type at:
+#  https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/
+
+# Your service name will be used in naming your resources like log groups, ECS services, etc.
+name: online-store-ver1-service
+type: Load Balanced Web Service
+
+# Distribute traffic to your service.
+http:
+  # Requests to this path will be forwarded to your service.
+  # To match all requests you can use the "/" path.
+  path: '/'
+  # You can specify a custom health check path. The default is "/".
+  #healthcheck: '/'
+
+# Configuration for your containers and service.
+image:
+  # Docker build arguments. For additional overrides: https://aws.github.io/copilot-cli/docs/manifest/lb-web-service/#image-build
+  build: Dockerfile
+  # Port exposed through your container to route traffic to it.
+  port: 8087
+
+cpu: 256       # Number of CPU units for the task.
+memory: 512    # Amount of memory in MiB used by the task.
+count: 1       # Number of tasks that should be running in your service.
+exec: true     # Enable running commands in your container.
+network:
+  connect: true # Enable Service Connect for intra-environment traffic between services.
+
+# storage:
+  # readonly_fs: true       # Limit to read-only access to mounted root filesystems.
+ 
+# Optional fields for more advanced use-cases.
+#
+
+
+#secrets:                      # Pass secrets from AWS Systems Manager (SSM) Parameter Store.
+#  GITHUB_TOKEN: GITHUB_TOKEN  # The key is the name of the environment variable, the value is the name of the SSM parameter.
+
+# You can override any of the values defined above by environment.
+environments:
+    prod:
+      count:
+        range: 1-10
+        cpu_percentage: 70
+        memory_percentage: 80
+      #secrets: 
+        #MONGODB_URL: /copilot/online-store-app-new/prod/secrets/MONGODB_URL
+        #AWS_ACCESS_KEY_ID: /copilot/online-store-app-new/prod/secrets/AWS_ACCESS_KEY_ID
+        #AWS_SECRET_ACCESS_KEY: /copilot/online-store-app-new/prod/secrets/AWS_SECRET_ACCESS_KEY
+        #AWS_REGION: /copilot/online-store-app-new/prod/secrets/AWS_REGION
+        #AWS_SYS_EMAIL: /copilot/online-store-app-new/prod/secrets/AWS_SYS_EMAIL
+        #AWS_S3_BUCKET: /copilot/online-store-app-new/prod/secrets/AWS_S3_BUCKET
+        #REDIS_HOST: /copilot/online-store-app-new/prod/secrets/REDIS_HOST
+        #REDIS_PORT: /copilot/online-store-app-new/prod/secrets/REDIS_PORT
+        #COGNITO_USER_POOL_ID: /copilot/online-store-app-new/prod/secrets/COGNITO_USER_POOL_ID
+        #COGNITO_CLIENT_ID: /copilot/online-store-app-new/prod/secrets/COGNITO_CLIENT_ID
