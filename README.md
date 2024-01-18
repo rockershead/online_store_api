@@ -16,3 +16,4 @@ A mock-up of an online store using the MERN stack.AWS Elasticache(Redis) is used
 
 
 
+Icons to draw this diagram can be found at https://aws-icons.com
