@@ -19,6 +19,7 @@ var server;
 
 const mongodbUrl = process.env.MONGODB_URL;
 console.log(mongodbUrl);
+console.log(process.env.REDIS_HOST);
 
 var port = normalizePort(process.env.PORT || "8087");
 app.set("port", port);

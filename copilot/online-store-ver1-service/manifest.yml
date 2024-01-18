@@ -40,19 +40,19 @@ network:
 
 # You can override any of the values defined above by environment.
 environments:
-    prod:
+    production:
       count:
         range: 1-10
         cpu_percentage: 70
         memory_percentage: 80
-      #secrets: 
-        #MONGODB_URL: /copilot/online-store-app-new/prod/secrets/MONGODB_URL
-        #AWS_ACCESS_KEY_ID: /copilot/online-store-app-new/prod/secrets/AWS_ACCESS_KEY_ID
-        #AWS_SECRET_ACCESS_KEY: /copilot/online-store-app-new/prod/secrets/AWS_SECRET_ACCESS_KEY
-        #AWS_REGION: /copilot/online-store-app-new/prod/secrets/AWS_REGION
-        #AWS_SYS_EMAIL: /copilot/online-store-app-new/prod/secrets/AWS_SYS_EMAIL
-        #AWS_S3_BUCKET: /copilot/online-store-app-new/prod/secrets/AWS_S3_BUCKET
-        #REDIS_HOST: /copilot/online-store-app-new/prod/secrets/REDIS_HOST
-        #REDIS_PORT: /copilot/online-store-app-new/prod/secrets/REDIS_PORT
-        #COGNITO_USER_POOL_ID: /copilot/online-store-app-new/prod/secrets/COGNITO_USER_POOL_ID
-        #COGNITO_CLIENT_ID: /copilot/online-store-app-new/prod/secrets/COGNITO_CLIENT_ID
+      secrets: 
+        MONGODB_URL: /copilot/online-store-ver1/production/secrets/MONGODB_URL
+        AWS_ACCESS_KEY_ID: /copilot/online-store-ver1/production/secrets/AWS_ACCESS_KEY_ID
+        AWS_SECRET_ACCESS_KEY: /copilot/online-store-ver1/production/secrets/AWS_SECRET_ACCESS_KEY
+        AWS_REGION: /copilot/online-store-ver1/production/secrets/AWS_REGION
+        AWS_SYS_EMAIL: /copilot/online-store-ver1/production/secrets/AWS_SYS_EMAIL
+        AWS_S3_BUCKET: /copilot/online-store-ver1/production/secrets/AWS_S3_BUCKET
+        REDIS_HOST: /copilot/online-store-ver1/production/secrets/REDIS_HOST
+        REDIS_PORT: /copilot/online-store-ver1/production/secrets/REDIS_PORT
+        COGNITO_USER_POOL_ID: /copilot/online-store-ver1/production/secrets/COGNITO_USER_POOL_ID
+        COGNITO_CLIENT_ID: /copilot/online-store-ver1/production/secrets/COGNITO_CLIENT_ID

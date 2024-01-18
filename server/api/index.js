@@ -15,7 +15,7 @@ const routersInit = (config) => {
 
   router.use("/auth", auth());
 
-  //router.use(permissionHandler);
+  router.use(permissionHandler);
 
   // Define API Endpoints
   router.use("/users", users());

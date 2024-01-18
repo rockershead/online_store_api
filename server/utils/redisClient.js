@@ -5,7 +5,7 @@ redisClient = redis.createClient({
   socket: {
     port: process.env.REDIS_PORT,
     host: process.env.REDIS_HOST,
-    connectTimeout: 17000,
+    /*connectTimeout: 17000,
     maxRetriesPerRequest: 4,
     retryStrategy: (times) => Math.min(times * 30, 1000),
     reconnectOnError: (error) => {
@@ -13,7 +13,7 @@ redisClient = redis.createClient({
       return targetErrors.some((targetError) =>
         targetError.test(error.message)
       );
-    },
+    },*/
   },
 });
 
