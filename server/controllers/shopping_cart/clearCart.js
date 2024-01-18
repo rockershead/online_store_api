@@ -4,7 +4,7 @@ const clearCart = () => async (req, res, next) => {
   //get the userId and set that id to the products
   const decodedToken = res.locals.result;
   const email = decodedToken.email;
-
+  console.log(email);
   const cart = await redisClient.get(email);
 
   if (cart) {
