@@ -1,10 +1,23 @@
 const { redisClient } = require("../../utils");
 const { Product } = require("../../models");
 const _ = require("lodash");
+const { getFiles3Url } = require("../../utils");
 
 async function populateProductInfo(items) {
   const productIds = _.map(items, "productId");
-  const productDocs = await Product.find({ _id: { $in: productIds } });
+  const productDocs = await Product.find({ _id: { $in: productIds } })
+    .lean()
+    .exec();
+  let promises = productDocs.map(async (product) => {
+    const files3Url = await getFiles3Url(
+      product.path,
+      process.env.AWS_S3_BUCKET
+    );
+
+    product.productImageUrl = files3Url;
+  });
+  await Promise.all(promises);
+
   const groupedDocsById = _.keyBy(productDocs, "_id");
 
   items.forEach((item) => {
