@@ -3,6 +3,7 @@ const { getFiles3Url } = require("../../utils");
 //implememt search feature,pagination
 const list = () => async (req, res, next) => {
   const { page, pageSize, search, ...otherParams } = req.query;
+  console.log("helo")
   const skip = (page - 1) * pageSize;
 
   const _query = {
